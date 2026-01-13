@@ -21,5 +21,6 @@ public class _6_Ex {
 
         scanner.close();
 
+
     }
 }
