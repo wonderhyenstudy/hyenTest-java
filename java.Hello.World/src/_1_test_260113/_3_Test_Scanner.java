@@ -14,7 +14,7 @@ public class _3_Test_Scanner {
 
 
         // 기본 예시
-        int count = 100;
+//        int count = 100;
 
         // Scanner 클래스를 이용해서, 반지름 입력 받기.
         // 인스턴스 선언하는 형식은 , 통으로 사용하기.
