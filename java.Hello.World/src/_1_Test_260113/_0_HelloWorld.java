@@ -1,4 +1,4 @@
-package _1_test_260113;
+package _1_Test_260113;
 
 public class _0_HelloWorld { //클래스
     public static void main(String[] args) { //메서드
