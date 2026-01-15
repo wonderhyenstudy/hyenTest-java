@@ -2,8 +2,8 @@ package _2_Test_260114.hyen_ex;
 
 public class _6_Ex {
 
-    public static int getMaxValue(int[] arr) {
-        int maxVal = arr[0];
+    public static int getMaxValue(int[] arr) {//int[] 배열 arr 을 매개변수로 받는다
+        int maxVal = arr[0]; // 임시로 담을 최대 숫자변수. 임시로 배열의 첫번재 숫자 값을 사용.
         for (int num : arr){ //arr 배열안에 정수 요소를 순회를 돌면서, 요소를 하나씩 꺼내기
             if (num > maxVal) { // 현재 꺼낸 숫자가 기준값보다 크다면
                 maxVal = num; // 기준값을 현재 숫자로 변경

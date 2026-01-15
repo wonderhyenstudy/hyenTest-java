@@ -27,18 +27,22 @@ public class _5_Ex {
                 } else {
                     intArray[i][j] = 0;
                 }
-
-
             }
-
         }
-
-        for (int i = 0; i < intArray.length; i++) {
-            for (int j = 0; j < intArray.length ; j++) {
-                System.out.print(intArray[i][j]);
+        // 방법1
+//        for (int i = 0; i < intArray.length; i++) {
+//            for (int j = 0; j < intArray.length ; j++) {
+//                System.out.print(intArray[i][j] + " ");
+//            }
+//            System.out.println();
+//
+//        }
+        // 방법2
+        for (int[] row : intArray){
+            for (int col : row){
+                System.out.print(col + " ");
             }
             System.out.println();
-
         }
 
 

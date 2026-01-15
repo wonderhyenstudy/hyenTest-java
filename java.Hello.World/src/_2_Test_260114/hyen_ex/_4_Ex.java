@@ -25,8 +25,12 @@ public class _4_Ex {
             sum += num[i];
         }
 
+//        System.out.println("평균 : " + sum/num.length);
+        double avg = (double) sum/num.length; // 변수 타입 강제로 변경. 캐스팅 연산자.
+
         System.out.println("합계 : " + sum);
-        System.out.println("평균 : " + sum/num.length);
+        System.out.println("평균 : " + avg);
+
 
 
     }
