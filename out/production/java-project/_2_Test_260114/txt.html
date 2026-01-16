@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+#JAVA프로그래밍 #메모
+260114- JAVA프로그래밍: 2일차, 전체 : 21일차, 총일수 : 133일
+
+메모중 ...
+
+1
+자바의 조건문
+
+### 1. 학습 목표
+
+* 조건문을 사용해 흐름 제어가 가능한 프로그램을 작성한다.
+* `if`, `else if`, `else`, `switch`문을 익히고 활용할 수 있다.
+
+### 2. 학습 내용
+
+* 조건 분기 처리 방식
+* 다양한 조건에 따른 흐름 제어
+* switch 문을 통한 선택 처리
+
+### 3. 역사, 배경, 소개
+
+조건문은 프로그램의 흐름을 다르게 만들기 위한 필수 구조이다.
+자바는 C/C++의 구조를 계승했으며,
+명확한 조건 표현으로 코드 가독성을 높여준다.
+
+### 4. 기본 개념
+
+* `if` : 조건이 참일 때 실행
+* `else if` : 여러 조건 중 하나 선택
+* `else` : 위 조건이 모두 거짓일 때 실행
+* `switch` : 특정 값에 따라 다른 동작 처리 (break 중요)
+
+### 5. 기본 문법 정의
+
+```java
+int score = 70;
+if (score >= 90) {
+System.out.println("A");
+} else if (score >= 80) {
+System.out.println("B");
+} else {
+System.out.println("C 이하");
+}
+```
+
+
+### 5-2. 많이 사용하는 옵션 설명
+
+* `if (조건)` 구조, `else`는 선택지 없음 처리
+* `switch-case`에서 `break`를 안 쓰면
+다음 case로 넘어감 (fall-through 현상)
+* `default`는 모든 조건이 해당되지 않을 때 사용
+
+### 6. 구조 설명 (비유)
+
+* `if~else`는 **갈림길 이정표**
+* `switch`는 **자동판매기 버튼에 따라 다른 음료 나오는 구조**
+
+### 7. 실무 어떻게 활용 되는지
+
+* 사용자 입력 분기 처리 (예: 메뉴 선택)
+* 인증 절차 조건 분기
+* 게임 로직에서 이벤트 판단
+
+기본예시
+int temp = 35;
+if (temp > 30) {
+System.out.println("더움");
+}
+
+int month = 4;
+switch (month) {
+case 3: case 4: case 5:
+System.out.println("봄");
+break;
+case 6: case 7: case 8:
+System.out.println("여름");
+break;
+default:
+System.out.println("기타 계절");
+}
+
+기본예시2
+package _2_test_260114;
+
+import java.util.Scanner;
+
+public class _1_Test_Condition_if_switch_Ex3_Scanner {
+public static void main(String[] args) {
+
+// 1. 스캐너 도구 이용
+Scanner scanner = new Scanner( System.in);
+
+
+
+
+// 2. 입력 받기
+// 온도 입력 받기.
+System.out.println("온도를 입력하세요(숫자만) : ");
+
+// 3. 스캐너 가져오기
+int temp = scanner.nextInt();
+
+// 4. 출력
+// int temp = 35; // 더미 데이터 대신에, 사용자가 콘솔에서 입력 받은 데이터를 이용함. \
+// 현재는 콘솔이지만, 나중에 UI, 웹, 모바일 화면으로 대체 됨.
+if (temp > 30) {
+System.out.println("더움");
+} else if (temp <= 30 && temp >= 22) {
+System.out.println("적당함");
+} else {
+System.out.println("조금 쌀쌀함");
+}
+// 5. 스캐너 자원 반납, 1차 반납.
+// 계절 조건을 이용할 경우, 모든 작업이 끝나고, 맨마지막에 자원 반납 할 예정.
+// scanner.close();
+
+// 월 입력 부분
+System.out.println("월 1 ~ 12 입력하세요(숫자만) : ");
+// 스캐너 가져오기
+int month = scanner.nextInt();
+// 출력하기.
+// int month = 4;
+switch (month) {
+
+case 3: case 4: case 5:
+System.out.println("봄");
+break;
+case 6: case 7: case 8:
+System.out.println("여름");
+break;
+case 12: case 1: case 2:
+System.out.println("겨울");
+break;
+default:
+System.out.println("가을");
+} // switch
+
+} // main
+} // class
+
+
+
+실습1
+1)나이를 입력받아 65세 이상이면 "노년층" 출력
+
+2) switch 문으로 메뉴 선택
+메뉴 번호에 따라서, 음식 메뉴 출력 하기.
+입력 화면은, 메뉴 화면
+1. 김밥 2. 국밥 3.칼국수 4.국수 등.
+예시
+case 1 김밥, 본인 원하는 메뉴 추가. 출력해보기.
+
+3)점수에 따라 A~F 등급 출력, if 문 이용해보기.
+A: 90점이상
+B: 80점이상
+C: 70점이상
+D: 60점이상
+F: 나머지
+
+확인, 다음 시간, 11:10
+
+정답 코드
+package _2_test_260114.ex;
+
+import java.util.Scanner;
+
+public class Ex1 {
+public static void main(String[] args) {
+// 1. 스캐너 도구 이용
+Scanner scanner = new Scanner(System.in);
+
+
+
+
+System.out.println("===========실습 1-1==================");
+// 1)나이를 입력받아 65세 이상이면 "노년층" 출력
+// 2. 입력 받기
+System.out.println("나이를 입력하세요(숫자만) : ");
+
+// 3. 스캐너 가져오기
+int age = scanner.nextInt();
+// 4. 출력
+if (age >= 65) {
+System.out.println("노년층입니다.");
+} else {
+System.out.println("노년층이 아닙니다.");
+}
+
+
+//
+// 2) switch 문으로 메뉴 선택
+// 메뉴 번호에 따라서, 음식 메뉴 출력 하기.
+// 입력 화면은, 메뉴 화면
+// 1. 김밥 2. 국밥 3.칼국수 4.국수 등.
+// 예시
+// case 1 김밥, 본인 원하는 메뉴 추가. 출력해보기.
+
+System.out.println("===========실습 1-2==================");
+// 2. 입력 받기
+System.out.println("============================== ");
+System.out.println("점심메뉴판 ");
+System.out.println("1. 김밥 2. 국밥 3.칼국수 4.국수 5.도시락 ");
+System.out.println("원하는 점심 메뉴를 선택해주세요(1~5) : ");
+System.out.println("============================== ");
+// 3. 스캐너 가져오기
+int menuNumber = scanner.nextInt();
+// 4. 출력
+switch (menuNumber) {
+case 1:
+System.out.println("김밥 메뉴를 선택했습니다. 가격은 3000원입니다.");
+break;
+case 2:
+System.out.println("국밥 메뉴를 선택했습니다. 가격은 9000원입니다.");
+break;
+case 3:
+System.out.println("칼국수 메뉴를 선택했습니다. 가격은 6000원입니다.");
+break;
+case 4:
+System.out.println("국수 메뉴를 선택했습니다. 가격은 5000원입니다.");
+break;
+case 5:
+System.out.println("도시락 메뉴를 선택했습니다. 가격은 0원입니다.");
+break;
+
+}
+
+
+
+//
+// 3)점수에 따라 A~F 등급 출력, if 문 이용해보기.
+// A: 90점이상
+// B: 80점이상
+// C: 70점이상
+// D: 60점이상
+// F: 나머지
+System.out.println("===========실습 1-3==================");
+// 2. 입력 받기
+// 점수 입력 받기.
+System.out.println("점수를 입력하세요(숫자만 :0 ~ 100) : ");
+// 3. 스캐너 가져오기
+int score = scanner.nextInt();
+// 4. 출력
+if(score >= 90) {
+System.out.println("점수 등급은 : A 입니다.");
+} else if (score >= 80) {
+System.out.println("점수 등급은 : B 입니다.");
+}
+else if (score >= 70) {
+System.out.println("점수 등급은 : C 입니다.");
+}
+else if (score >= 60) {
+System.out.println("점수 등급은 : D 입니다.");
+} else {
+System.out.println("점수 등급은 : F 입니다.");
+}
+// 최종 작업 후, 스캐너 도구 반납, 자원 반납.
+scanner.close();
+
+
+} // main
+} // class
+
+
+
+2
+
+반복문과 break / continue 문
+
+### 1. 학습 목표
+
+* 반복문의 개념과 유형을 익힌다.
+* `for`, `while`, `do-while` 문을 구분하고 사용할 수 있다.
+* 반복문 내 흐름 제어를 위한 `break`, `continue` 사용법을 습득한다.
+
+### 2. 학습 내용
+
+* 반복문의 종류와 차이점
+* 반복 조건과 반복 횟수 설정 방법
+* 반복 중단(`break`), 다음 반복으로 건너뛰기(`continue`) 처리 방식
+
+### 3. 역사, 배경, 소개
+
+반복문은 동일한 작업을 여러 번 실행하기 위한 핵심 제어 구조로,
+프로그래밍에서 가장 자주 쓰인다.
+자바는 C 계열 언어처럼 `for`, `while`, `do-while`
+세 가지 반복문을 제공하고, 반복 제어를 위한
+`break`와 `continue`도 함께 사용된다.
+
+### 4. 기본 개념
+
+* `for`문: 반복 횟수가 정해져 있을 때 사용
+* `while`문: 조건이 참인 동안 반복
+* `do-while`문: 최소 1회 실행 보장
+* `break`: 반복문 강제 종료
+* `continue`: 해당 반복만 건너뛰고 다음 반복 진행
+
+### 5. 기본 문법 정의
+
+```java
+// for 문
+for (int i = 0; i < 5; i++) {
+System.out.println(i);
+}
+
+// while 문
+int i = 0;
+while (i < 5) {
+System.out.println(i);
+i++;
+}
+
+// do-while 문
+int j = 0;
+do {
+System.out.println(j);
+j++;
+} while (j < 5);
+
+// break, continue
+for (int k = 1; k <= 10; k++) {
+if (k == 5) break; // 5에서 반복 종료
+if (k % 2 == 0) continue; // 짝수 건너뛰기
+System.out.println(k);
+}
+
+### 5-2. 자주 사용하는 옵션 설명
+
+* `for (int i = 0; i < n; i++)` : 가장 일반적인 반복 구조
+* `while (true)` : 무한 루프 구조, 내부에서 `break` 필수
+* `break` : 조건 충족 시 반복문을 빠져나감
+* `continue` : 이후 문장을 무시하고 다음 반복으로 넘어감
+
+### 6. 구조 설명 (비유)
+
+* `for`문은 **정해진 횟수의 계단**을 오르는 것
+* `while`문은 **조건이 참일 때만 계속 도는 바퀴**
+* `do-while`은 **최소 한 바퀴는 돌고 나오는 회전목마**
+* `break`는 **비상탈출구**, `continue`는 **잠깐 쉬고 다음 스텝으로 점프**
+
+### 7. 실무 어떻게 활용 되는지
+
+* 리스트/배열 순회, 사용자 입력 반복
+* 특정 조건 충족 시 조기 종료 (`break`)
+* 무의미한 경우 건너뛰기 (`continue`)
+
+기본예시
+1)
+for (int i = 1; i <= 5; i++) {
+System.out.println(i);
+}
+2)
+1~10 중 홀수만 출력
+for (int i = 1; i <= 10; i++) {
+if (i % 2 == 0) continue;
+System.out.println(i);
+}
+3)
+1~10 중 6에서 멈추기
+for (int i = 1; i <= 10; i++) {
+if (i == 6) break;
+System.out.println(i);
+}
+
+실습2
+1)1~100까지의 합 출력
+힌트 for 문 활용
+
+2)사용자로부터 양수만 입력받고 음수가 입력되면 종료
+힌트 do-while 문 활용
+
+3)1~50 사이에서 7의 배수만 출력하되, 30이 넘으면 종료
+힌트 for 문 활용
+
+12:05 확인
+
+정답코드
+package _2_test_260114.ex;
+
+import java.util.Scanner;
+
+public class Ex2 {
+public static void main(String[] args) {
+// 실습2
+// 1)1~100까지의 합 출력
+// 힌트 for 문 활용
+System.out.println("=========실습2-1====================");
+int sum = 0;
+for (int i = 1; i <= 100; i++){
+sum += i; //sum = sum + i;
+}
+System.out.println("1~100까지의 총합 sum : " + sum);
+//
+// 2)사용자로부터 양수만 입력받고 음수가 입력되면 종료
+// 힌트 do-while 문 활용
+System.out.println("=========실습2-2====================");
+// 1. 스캐너 도구 이용
+Scanner scanner = new Scanner( System.in);
+
+
+
+// 2. 입력 받기
+System.out.println("숫자를 입력하세요(숫자만),음수를 입력시 종료됩니다. : ");
+
+// 3. 스캐너 가져오기
+
+do {
+int number = scanner.nextInt();
+if(number <0) {
+System.out.println("음수를 입력시 종료합니다.");
+break;
+} else {
+System.out.println("입력한 값은 : " + number);
+System.out.println("숫자를 입력하세요(숫자만),음수를 입력시 종료됩니다. : ");
+}
+} while (true);
+//
+// 3)1~50 사이에서 7의 배수만 출력하되, 30이 넘으면 종료
+// 힌트 for 문 활용
+System.out.println("=========실습2-3====================");
+for (int i = 1; i <= 50; i++) {
+if (i >30) {
+System.out.println("30초과시 종료합니다.");
+break; // for 문 탈출
+} else if(i % 7 != 0) { // 7의 배수가 아닌 경우, 다음 반복으로 진행.
+System.out.println("7의 배수가 아닙니다. " + i);
+continue;
+}
+// 30보다 작고, 7의 배수인경우.
+System.out.println("출력 값: " + i);
+
+}
+}
+}
+
+
+3
+배열과 다차원 배열, 메서드에서 배열 리턴하기
+
+### 1. 학습 목표
+
+* 배열의 개념과 선언/초기화 방법을 익힌다.
+* 다차원 배열의 구조와 활용 방법을 이해한다.
+* 메서드에서 배열을 반환하고 다루는 방식을 배운다.
+
+### 2. 학습 내용
+
+* 배열(Array) 정의와 배열 요소 접근
+* 2차원 배열(테이블 데이터, 행렬) 구조와 중첩 반복문 활용
+* 메서드에서 배열을 매개변수로 받고, 배열을 반환하는 방식
+
+### 3. 역사, 배경, 소개
+
+배열은 메모리에 동일한 타입의 데이터를 연속적으로 저장하는 자료구조로,
+효율적인 데이터 관리와 반복 처리에 적합하다.
+자바에서는 배열이 객체로 취급되며,
+정적 크기를 가지며 크기 변경은 불가능하다.
+다차원 배열은 배열 안에 배열을 담은 형태로, 행렬 처리 등에서 많이 쓰인다.
+
+### 4. 기본 개념
+
+* **배열(Array)**: "동일한 타입의 데이터를"
+하나의 이름으로 관리하는 자료 구조
+* **다차원 배열**: 배열의 배열. "(테이블 데이터, 행렬)"
+가장 많이 사용하는 형태는 2차원 배열
+* **배열 리턴**: 메서드에서 배열을 생성하여 반환 가능
+메서드 구조, 기본 문법 구조 처음에 확인을 하는게 중요.
+
+### 5. 기본 문법 정의
+
+```java
+// 1차원 배열 선언과 초기화
+// 비유 계란판 만들고, 5칸만 만듦. 내용은 비워져 있음. 크기 고정.
+int[] scores = new int[5];
+// 비유 계란판 만들고, 5칸만 만듦. 내용은 채워져 있음. 크기 고정.
+int[] numbers = {1, 2, 3, 4, 5};
+
+// 2차원 배열 선언과 초기화
+int[][] matrix = {
+{1, 2},
+{3, 4},
+{5, 6}
+};
+
+// 메서드에서 배열 반환
+// public : 어느 위치에서든 해당 메서드에 접근 가능.
+// static : 따로 객체(인스턴스) 생성안해도 , 사용가능.
+// int[] : 메서드 이름 앞에 있는 키워드, 메서드가 반환 하는 타입.
+// 반환하는 형식, 정소를 요소로 가지는 배열을 반환합니다.
+// makeArray : 메서드 이름.
+public static int[] makeArray() {
+int[] arr = {10, 20, 30,...,몇만개};
+return arr;
+}
+```
+
+### 5-2. 자주 사용하는 옵션 설명
+
+* 배열의 길이 확인: `array.length`
+* 배열 요소 순회: `for` 또는 `foreach` (`for (int x : array)`)
+* 배열 리턴: `return 배열변수명;`
+* 2차원 배열 접근: `array[행][열]`
+
+### 6. 구조 설명 (비유)
+
+* 배열: **같은 종류 물건이 들어있는 칸이 있는 선반** 계란판!!
+* 2차원 배열: **행렬처럼 행과 열이 있는 엑셀 표** 테이블 !!
+* 배열 리턴: **선반째로 메서드에서 가져오는 느낌** 쿠팡박스(신선식품)!!
+
+### 7. 실무 어떻게 활용 되는지
+
+* 점수 목록, 사용자 ID 목록, 상품 목록 등 처리
+* 테이블 형태의 데이터(엑셀, DB)의 행렬 저장
+* 연산 처리 후 결과 목록을 배열로 반환
+
+기본예시
+package _2_test_260114;
+
+public class _4_Test_Array_Ex {
+
+// 예제 3: 배열 리턴 메서드 사용
+public static int[] getData() {
+return new int[]{5, 10, 15};
+}
+
+public static void main(String[] args) {
+// 예제 1: 배열 선언 후 출력
+int[] nums = {10, 20, 30};
+for (int n : nums) { // 향상된 for , 배열의 모든 요소를 순회.
+System.out.println(n);
+}
+
+// 예제 2: 2차원 배열 순회
+int[][] grid = {{1,2}, {3,4}};
+for (int i = 0; i < grid.length; i++) {
+for (int j = 0; j < grid[i].length; j++) {
+System.out.print(grid[i][j] + " ");
+}
+System.out.println();
+}
+
+// 예제 3: 배열 리턴 메서드 사용
+// static, main 메소드 밖으로 이동 했음.
+int[] result = getData();
+System.out.println(result[1]); // 10
+}
+}
+
+실습3
+1)
+사용자로부터 정수 5개를 입력받아 배열에 저장하고 역순 출력
+힌트)
+- 크기가 5개인 정수를 요소로 가지는 배열 생성
+- 스캐너를 이용해서, 입력받은 정수를 , 배열에 담기 , 반복문 활용
+- 배열에서 꺼내서, 출력하기.
+2)
+3x3 배열을 만들어 모든 요소에 1~9 채우고 출력
+
+3)
+문자열 배열을 메서드로 받아 가장 긴 문자열을 반환
+힌트)
+- 배열을 반환하는 메서드를 생성합니다.
+public static String 메서드명(String[] 배열이름)
+- 반복문을 이용해서, 배열 안에 들어 있는 문자열 중에서 가장 긴 문자열 찾아서
+배치. 배열의 길이를 이용하면. 배열. length()
+
+3시 20분까지
+
+정답 코드
+package _2_test_260114.ex;
+
+import java.util.Scanner;
+
+public class Ex3 {
+
+
+
+public static void main(String[] args) {
+// 1. 스캐너 도구 이용
+Scanner scanner = new Scanner(System.in);
+
+
+
+
+// 실습3
+// 1)
+// 사용자로부터 정수 5개를 입력받아 배열에 저장하고 역순 출력
+// 힌트)
+// - 크기가 5개인 정수를 요소로 가지는 배열 생성
+int[] arr = new int[5];
+System.out.println("실습3-1, 숫자를 5개 입력해주세요: ");
+// - 스캐너를 이용해서, 입력받은 정수를 , 배열에 담기 , 반복문 활용
+// arr[0] = scanner.nextInt();
+// arr[1] = scanner.nextInt();
+// arr[2] = scanner.nextInt();
+// arr[3] = scanner.nextInt();
+// arr[4] = scanner.nextInt();
+//반복문 활용 해보기.
+for (int i = 0; i < 5; i++) {
+arr[i] = scanner.nextInt();
+}
+// - 배열에서 꺼내서, 출력하기.
+// System.out.println("배열에서 요소 꺼내기 : " + arr[0]);
+// System.out.println("배열에서 요소 꺼내기 : " + arr[1]);
+// System.out.println("배열에서 요소 꺼내기 : " + arr[2]);
+// System.out.println("배열에서 요소 꺼내기 : " + arr[3]);
+// System.out.println("배열에서 요소 꺼내기 : " + arr[4]);
+
+for (int i = 4; i >= 0; i--) {
+System.out.println("배열에서 요소 꺼내기 : " + arr[i]);
+}
+
+// 2)
+// 3x3 배열(테이블, 행렬, 이중 배열)을 만들어 모든 요소에 1~9 채우고 출력
+System.out.println("실습3-2, 3x3 배열(테이블, 행렬, 이중 배열)을 만들어 모든 요소에 1~9 채우고 출력 ");
+// 순서1, 배열 생성
+int[][] grid = new int[3][3];
+
+// 순서2, 생성된 배열을 이중 for문을 이용해서, 값을 대입
+// 시작 값을 설정.
+int number = 1;
+// 행을 결정 for 문 , 바깥쪽 for
+for (int i = 0; i < 3; i++) {
+// 열을 결정 for 문, 안쪽 for
+for (int j = 0; j < 3; j++) {
+grid[i][j] = number++;
+// i = 0 일 때 , j = 0 ~ 2, [0][0], [0][1], [0][2]
+// i = 1 일 때 , j = 0 ~ 2, [1][0], [1][1], [1][2]
+// i = 2 일 때 , j = 0 ~ 2, [2][0], [2][1], [2][2]
+}
+}
+
+
+// 순서3, 생성된 배열을 이중 for 문을 이용해서, 값을 출력.
+// System.out.println(grid[0][0]);
+// System.out.println(grid[0][1]);
+// System.out.println(grid[0][2]);
+// System.out.println(grid[1][0]);
+// System.out.println(grid[1][1]);
+// System.out.println(grid[1][2]);
+// System.out.println(grid[2][0]);
+// System.out.println(grid[2][1]);
+// System.out.println(grid[2][2]);
+for (int[] row : grid) { // grid라는 행렬에서, 각 0행, 2행까지, 3개의 행을 꺼내기.
+for (int val : row) {
+System.out.println("배열의 요소 꺼내기 : " + val);
+}
+}
+
+//
+// 3)
+// 문자열 배열을 메서드로 받아 가장 긴 문자열을 반환
+// 힌트)
+// - 배열에서, 가장 긴 문자열을 반환하는 메서드를 생성합니다.
+// public static String 메서드명(String[] 배열이름)
+// - 반복문을 이용해서, 배열 안에 들어 있는 문자열 중에서 가장 긴 문자열 찾아서
+// 배치. 배열의 길이를 이용하면. 배열. length()
+System.out.println("실습3-3, 문자열 배열을 메서드로 받아 가장 긴 문자열을 반환");
+// 함수 사용
+// 준비물 1) 샘플 배열(문자열을 요소로 가지는)
+String[] array = {"apple", "banana", "kiwi"};
+// 2) 함수 사용, 사용법 -> 함수이름(인자값)
+// getLongest(array) -> 기능이, 문자열을 반환, 반환된 값을 담을 변수가 필요함.
+String result = getLongest(array);
+System.out.println("실습 3-3 : 가장 긴 문자열은? " + result);
+
+}
+
+// - 배열에서, 가장 긴 문자열을 반환하는 메서드를 생성합니다.
+// 순서1
+// 함수 정의? O, 호출?X
+public static String getLongest(String[] words) {
+// 샘플 배열 생성.
+// 5 6 4
+// String[] words = {"apple", "banana", "kiwi"};
+// 배치. 배열의 길이를 이용하면. 배열. length()
+// 순서2, 가장 긴 문자열을 임시로 담을 변수 선언.
+String longest = "";
+// 순서3,
+// - 반복문을 이용해서, 배열 안에 들어 있는 문자열 중에서 가장 긴 문자열 찾아서
+for(String word: words) { // words 배열안에 문자열 요소를 순회를 돌면서, 요소를 하나씩 꺼내기
+if(word.length() > longest.length()) {
+// 시도1, word:"apple", longest : "", 5 > 0 , true , longest : "apple"
+// 시도2, word:"banana", longest : "apple", 6 > 5 , true , longest : "banana"
+// 시도3, word:"kiwi", longest : "banana", 4 > 6 , false , longest : "banana"
+longest = word;
+} // if 닫는 부분
+} // for 닫는 부분
+// 순서4, 반복문이 끝나면 반환하기
+return longest; // 메서드가 반환하는 문자열 의미.
+} // getLongest 메서드 닫는 부분
+
+
+}
+
+응용예시 안내, 복습 및 과제
+1. (1차원 배열 & 누적 연산)
+사용자로부터 정수 5개를 입력받아 배열에 저장하세요.
+그 후 배열에 저장된 모든 숫자의
+**합계(Sum)**와 **평균(Average)**을 계산하여 출력하는 코드를 작성하세요.
+
+2. (2차원 배열 & 조건문)
+4x4 크기의 2차원 정수 배열을 만드세요.
+이중 반복문을 사용하여 행의 인덱스와 열의 인덱스가 같을 때(i == j)는
+1을 저장하고, 다를 때는 0을 저장하세요.
+그 후 배열의 형태를 출력하세요. (대각선 줄 긋기)
+힌트) 출력 print()
+- 줄바꿈을 할 때 : System.out.println();
+
+3. (메서드 & 최대값 찾기)
+정수형 배열을 매개변수(파라미터)로 받아,
+배열 안에 있는 숫자 중 **가장 큰 수(Max Value)**를 찾아
+반환하는 메서드 getMaxValue를 작성하세요.
+Main 메서드에서 샘플 배열을 만들어 테스트하세요.
+String[] numbers = {100,200,300};
+힌트)
+// 배열의 첫 번째 값을 기준값으로 설정
+int maxVal = arr[0];
+if (num > maxVal) { // 현재 꺼낸 숫자가 기준값보다 크다면
+maxVal = num; // 기준값을 현재 숫자로 변경
+}
+
+4
+5
+6
+7
+8
+9
+10
+
+
+</body>
+</html>

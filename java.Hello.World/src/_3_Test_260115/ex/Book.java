@@ -35,6 +35,8 @@ public class Book {
         this.writer = writer;
     }
 
+    // 오버로딩 구현 : 똑같은 생성자를 여러개 만든다.
+    // 생성자의 내용 : 매개변수의 갯수, 타입, 순서 중 적어도 하나는 달라야 한다.
     // 매개변수가 1개인 생성자
     public Book(String name) {
         this(name, "가격미정", "저자미정");
