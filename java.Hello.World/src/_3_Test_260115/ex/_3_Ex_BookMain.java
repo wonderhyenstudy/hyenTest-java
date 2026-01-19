@@ -1,8 +1,6 @@
 package _3_Test_260115.ex;
 
-import _3_Test_260115._2_Person;
-
-public class _3_Ex {
+public class _3_Ex_BookMain {
 
     public static void main(String[] args) {
 

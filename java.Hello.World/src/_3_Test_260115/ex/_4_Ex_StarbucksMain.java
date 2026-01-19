@@ -1,6 +1,6 @@
 package _3_Test_260115.ex;
 
-public class _4_Ex {
+public class _4_Ex_StarbucksMain {
     public static void main(String[] args) {
 //    2) 실행 클래스 : StarCoffeeMain
 //    - 샘플 주문, 3개 주문을 하고,

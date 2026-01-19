@@ -43,10 +43,6 @@ public class _0_Ex {
         int result = calc.add(10, 20);      // 메서드 호출
         System.out.println("합계: " + result);
 
-
-
-
-
     }
     static class Calculator {
         int num1;
