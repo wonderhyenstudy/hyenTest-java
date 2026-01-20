@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/java-project.iml" filepath="$PROJECT_DIR$/java-project.iml" />
+      <module fileurl="file://$PROJECT_DIR$/java.Hyen/java.Hyen.iml" filepath="$PROJECT_DIR$/java.Hyen/java.Hyen.iml" />
     </modules>
   </component>
 </project>
