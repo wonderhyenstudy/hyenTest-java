@@ -1,1 +1,1 @@
-홍길동,naver@naver.com,1234,23
+홍길동,naver@naver.com,1234,18
